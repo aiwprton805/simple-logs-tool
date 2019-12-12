@@ -32,14 +32,16 @@ public class RecordExtractor implements Callable<List<Record>> {
     public List<Record> call() throws IOException {
         try (Stream<String> lines = Files.lines(filePath)) {
             return lines
-                    .map(line -> {
-                        Matcher m = RECORD_PATTERN.matcher(line);
-                        if (m.matches())
-                            return new Record(LocalDateTime.parse(m.group(1), Record.DATE_TIME_FORMATTER), m.group(2), m.group(3));
-                        return null;
-                    })
+                    .map(RecordExtractor::stringToRecord)
                     .filter(Objects::nonNull)
                     .collect(Collectors.toList());
         }
+    }
+
+    private static Record stringToRecord(final String line){
+        Matcher m = RECORD_PATTERN.matcher(line);
+        if (m.matches())
+            return new Record(LocalDateTime.parse(m.group(1), Record.DATE_TIME_FORMATTER), m.group(2), m.group(3));
+        return null;
     }
 }
