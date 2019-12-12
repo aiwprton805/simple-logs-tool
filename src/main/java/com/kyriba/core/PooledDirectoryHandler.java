@@ -28,11 +28,7 @@ public class PooledDirectoryHandler implements DirectoryHandler {
 
     protected PooledDirectoryHandler(final Path dirPath, final RecordWriter recordWriter,
                                      final RecordFilterWorker recordFilterWorker, final RecordStatistics recordStats) {
-        this.dirPath = dirPath;
-        this.executorService = Executors.newFixedThreadPool(1);
-        this.recordWriter = recordWriter;
-        this.recordFilterWorker = recordFilterWorker;
-        this.recordStats = recordStats;
+        this(dirPath, 1, recordWriter, recordFilterWorker, recordStats);
     }
 
     protected PooledDirectoryHandler(final Path dirPath, final int threads, final RecordWriter recordWriter,
