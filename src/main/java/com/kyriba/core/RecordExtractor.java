@@ -38,7 +38,7 @@ public class RecordExtractor implements Callable<List<Record>> {
         }
     }
 
-    private static Record stringToRecord(final String line){
+    private static Record stringToRecord(final String line) {
         Matcher m = RECORD_PATTERN.matcher(line);
         if (m.matches())
             return new Record(LocalDateTime.parse(m.group(1), Record.DATE_TIME_FORMATTER), m.group(2), m.group(3));
