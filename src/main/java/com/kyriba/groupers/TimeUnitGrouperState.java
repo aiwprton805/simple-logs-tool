@@ -25,7 +25,7 @@ public class TimeUnitGrouperState implements GrouperState<LocalDateTime, Record>
 
     public TimeUnitGrouperState(final ChronoUnit timeUnit) {
         if (isNotSupported(timeUnit)) {
-            throw new IllegalArgumentException("timeUnit must been ChronoUnit.HOURS or ChronoUnit.DAYS or ChronoUnit.MONTHS.");
+            throw new IllegalArgumentException("timeUnit should be ChronoUnit.HOURS or ChronoUnit.DAYS or ChronoUnit.MONTHS.");
         }
         this.timeUnit = timeUnit;
     }
