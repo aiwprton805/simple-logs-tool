@@ -57,7 +57,7 @@ public class RecordStatistics {
 
     private void printTimeUnitGroupedStatistics() {
         if (TimeUnitGrouperState.isNotSupported(timeUnit)) {
-            throw new IllegalArgumentException("timeUnit must been ChronoUnit.HOURS or ChronoUnit.DAYS or ChronoUnit.MONTHS.");
+            throw new IllegalArgumentException("timeUnit should be ChronoUnit.HOURS or ChronoUnit.DAYS or ChronoUnit.MONTHS.");
         }
         DateTimeFormatter fmt;
         switch (timeUnit) {
